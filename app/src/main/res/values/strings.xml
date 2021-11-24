@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">PI-211</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="even_week">Четная неделя</string>
+    <string-array name="days">
+        <item>Понедельник</item>
+        <item>Вторник</item>
+        <item>Среда</item>
+        <item>Четверг</item>
+        <item>Пятница</item>
+    </string-array>
+    <string-array name="group">
+        <item>Первая</item>
+        <item>Вторая</item>
+    </string-array>
+    <string-array name="even">
+        <item>Четная</item>
+        <item>Не четная</item>
+    </string-array>
+</resources>
