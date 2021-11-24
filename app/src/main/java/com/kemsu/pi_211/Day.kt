@@ -1,3 +1,7 @@
 package com.kemsu.pi_211
 
-data class Day(val dayName: String, val dayEven: String, val dayGroup: String )
+data class Day(
+    val name: String,
+    val even: String,
+    val group: String
+    )

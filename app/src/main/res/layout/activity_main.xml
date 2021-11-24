@@ -70,14 +70,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:text="TextView"
+                android:background="@color/teal_700"
+                android:gravity="center"
+                android:text="8.00"
                 android:textSize="28sp" />
 
             <TextView
                 android:id="@+id/tvLesson1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView"
                 android:textSize="24sp" />
         </TableRow>
 
@@ -91,14 +92,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:text="TextView"
+                android:background="@color/teal_700"
+                android:gravity="center"
+                android:text="9.45"
                 android:textSize="28sp" />
 
             <TextView
                 android:id="@+id/tvLesson2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView"
                 android:textSize="24sp" />
         </TableRow>
 
@@ -112,14 +114,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:text="TextView"
+                android:background="@color/teal_700"
+                android:gravity="center"
+                android:text="11.45"
                 android:textSize="28sp" />
 
             <TextView
                 android:id="@+id/tvLesson3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView"
                 android:textSize="24sp" />
         </TableRow>
 
@@ -133,14 +136,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:text="TextView"
+                android:background="@color/teal_700"
+                android:gravity="center"
+                android:text="13.30"
                 android:textSize="28sp" />
 
             <TextView
                 android:id="@+id/tvLesson4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView"
                 android:textSize="24sp" />
         </TableRow>
 
@@ -154,14 +158,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:text="TextView"
+                android:background="@color/teal_700"
+                android:gravity="center"
+                android:text="15.30"
                 android:textSize="28sp" />
 
             <TextView
                 android:id="@+id/tvLesson5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView"
                 android:textSize="24sp" />
         </TableRow>
 

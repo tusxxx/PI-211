@@ -16,6 +16,6 @@
     </string-array>
     <string-array name="even">
         <item>Четная</item>
-        <item>Не четная</item>
+        <item>Нечетная</item>
     </string-array>
 </resources>
