@@ -1,44 +1,50 @@
 package com.kemsu.pi_211
 
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
 import java.text.SimpleDateFormat
 import java.util.*
-
-val calendar = Calendar.getInstance()
-val date = calendar.time
-val dayOfWeek = SimpleDateFormat("EEEE").format(date.time)
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var day = findViewById<Spinner>(R.id.spinDay)
+
         val button: Button = findViewById(R.id.btFind)
 
-        when (dayOfWeek) {
-            "Понедельник" -> day.setSelection(0)
-            "вторник" -> day.setSelection(1)
-            "среда" -> day.setSelection(2)
-            "четверг" -> day.setSelection(3)
-            "пятница" -> day.setSelection(4)
-        }
+
 
         button.setOnClickListener {
             setDay()
+            notiffy()
         }
     }
 
     fun setDay() {
+        val calendar = Calendar.getInstance()
+        val date = calendar.time
+        val dayOfWeek = SimpleDateFormat("EEEE").format(date.time)
+        var daySpinner = findViewById<Spinner>(R.id.spinDay)
         var day = findViewById<Spinner>(R.id.spinDay).selectedItem
         val even = findViewById<Spinner>(R.id.spinEven).selectedItem
         val group = findViewById<Spinner>(R.id.spinGroup).selectedItem
 
+        when (dayOfWeek) {
+            "Понедельник" -> daySpinner.setSelection(0)
+            "вторник" -> daySpinner.setSelection(1)
+            "среда" -> daySpinner.setSelection(2)
+            "четверг" -> daySpinner.setSelection(3)
+            "пятница" -> daySpinner.setSelection(4)
+        }
 
         val lesson1 = findViewById<TextView>(R.id.tvLesson1)
         val lesson2 = findViewById<TextView>(R.id.tvLesson2)
@@ -190,5 +196,23 @@ class MainActivity : AppCompatActivity() {
                 lesson5.text = ".спи"
             }
         }
+    }
+
+    fun notiffy() {
+        val NOTIFY_ID: Int = 100;
+        val notificationIntent = Intent(this, MainActivity::class.java)
+        val contentIntent = PendingIntent.getActivity(
+            this,
+            0,
+            notificationIntent,
+            PendingIntent.FLAG_CANCEL_CURRENT
+        )
+        val builder = NotificationCompat.Builder(this)
+        builder.setContentIntent(contentIntent)
+            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setContentTitle("Уведомление")
+            .setContentText("Тест")
+        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.notify(NOTIFY_ID, builder.build())
     }
 }
