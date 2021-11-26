@@ -44,13 +44,14 @@ class MainActivity : AppCompatActivity() {
             var doc = Jsoup.connect("https://kemsu.ru/education/schedule//").get()
             whatWeek = doc.select("body > main > div > div > div > div.calendar-week > div:nth-child(2)").toString()
             Log.d("UrlTest", whatWeek)
+            runOnUiThread {
+                if (whatWeek.contains("нечетная")) {
+                    evenSpinner.setSelection(1)
+                } else  {
+                    evenSpinner.setSelection(0)
+                }
+            }
         }.start()
-
-        if (whatWeek.contains("нечетная")) {
-            evenSpinner.setSelection(1)
-        } else  {
-            evenSpinner.setSelection(0)
-        }
 
         when (dayOfWeek) {
             "понедельник" -> daySpinner.setSelection(0)
