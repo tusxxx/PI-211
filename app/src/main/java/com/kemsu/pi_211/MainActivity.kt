@@ -3,17 +3,15 @@ package com.kemsu.pi_211
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import org.jsoup.Jsoup
-import java.net.HttpURLConnection
-import java.net.URL
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -39,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         val daySpinner = findViewById<Spinner>(R.id.spinDay)
         val evenSpinner = findViewById<Spinner>(R.id.spinEven)
+        val groupSpinner = findViewById<Spinner>(R.id.spinGroup)
 
         Thread {
             var doc = Jsoup.connect("https://kemsu.ru/education/schedule//").get()
@@ -60,21 +59,28 @@ class MainActivity : AppCompatActivity() {
             "четверг" -> daySpinner.setSelection(3)
             "пятница" -> daySpinner.setSelection(4)
         }
+
+        val groupState = getSharedPreferences("Group state", MODE_PRIVATE)
+        groupSpinner.setSelection(groupState.getInt("Group", 0))
+
     }
 
     fun setDay() {
         val day = findViewById<Spinner>(R.id.spinDay).selectedItem
         val even = findViewById<Spinner>(R.id.spinEven).selectedItem
         val group = findViewById<Spinner>(R.id.spinGroup).selectedItem
+        val groupSpinner = findViewById<Spinner>(R.id.spinGroup)
+        val thisDay = Day(day.toString(), even.toString(), group.toString())
+
+        val groupState: SharedPreferences.Editor = getSharedPreferences("Group state", MODE_PRIVATE).edit()
+        groupState.putInt("Group", groupSpinner.selectedItemPosition)
+        groupState.apply()
 
         val lesson1 = findViewById<TextView>(R.id.tvLesson1)
         val lesson2 = findViewById<TextView>(R.id.tvLesson2)
         val lesson3 = findViewById<TextView>(R.id.tvLesson3)
         val lesson4 = findViewById<TextView>(R.id.tvLesson4)
         val lesson5 = findViewById<TextView>(R.id.tvLesson5)
-
-        Toast.makeText(this, dayOfWeek.toString(), Toast.LENGTH_LONG).show()
-        val thisDay = Day(day.toString(), even.toString(), group.toString())
 
         when (thisDay) {
             Day("Понедельник", "Нечетная", "Первая") -> {
