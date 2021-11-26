@@ -4,24 +4,28 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
+import java.net.HttpURLConnection
+import java.net.URL
 import java.text.SimpleDateFormat
 import java.util.*
+
+val calendar = Calendar.getInstance()
+val date = calendar.time
+val dayOfWeek = SimpleDateFormat("EEEE").format(date.time)
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         val button: Button = findViewById(R.id.btFind)
-
-
 
         button.setOnClickListener {
             setDay()
@@ -29,22 +33,36 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun setDay() {
-        val calendar = Calendar.getInstance()
-        val date = calendar.time
-        val dayOfWeek = SimpleDateFormat("EEEE").format(date.time)
-        var daySpinner = findViewById<Spinner>(R.id.spinDay)
-        var day = findViewById<Spinner>(R.id.spinDay).selectedItem
-        val even = findViewById<Spinner>(R.id.spinEven).selectedItem
-        val group = findViewById<Spinner>(R.id.spinGroup).selectedItem
+    override fun onStart() {
+        super.onStart()
+        val daySpinner = findViewById<Spinner>(R.id.spinDay)
+
+
+        val url = URL("https://kemsu.ru/education/schedule//")
+        val urlConnection = url.openConnection() as HttpURLConnection
+        Thread {
+            try {
+                val text = urlConnection.inputStream.bufferedReader().readText()
+                Log.d("UrlTest", text)
+            } finally {
+                urlConnection.disconnect()
+            }
+        }.start()
+
 
         when (dayOfWeek) {
-            "Понедельник" -> daySpinner.setSelection(0)
+            "понедельник" -> daySpinner.setSelection(0)
             "вторник" -> daySpinner.setSelection(1)
             "среда" -> daySpinner.setSelection(2)
             "четверг" -> daySpinner.setSelection(3)
             "пятница" -> daySpinner.setSelection(4)
         }
+    }
+
+    fun setDay() {
+        val day = findViewById<Spinner>(R.id.spinDay).selectedItem
+        val even = findViewById<Spinner>(R.id.spinEven).selectedItem
+        val group = findViewById<Spinner>(R.id.spinGroup).selectedItem
 
         val lesson1 = findViewById<TextView>(R.id.tvLesson1)
         val lesson2 = findViewById<TextView>(R.id.tvLesson2)
