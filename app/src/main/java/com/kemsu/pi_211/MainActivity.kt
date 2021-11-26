@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
+import org.jsoup.Jsoup
 import java.net.HttpURLConnection
 import java.net.URL
 import java.text.SimpleDateFormat
@@ -19,6 +20,7 @@ import java.util.*
 val calendar = Calendar.getInstance()
 val date = calendar.time
 val dayOfWeek = SimpleDateFormat("EEEE").format(date.time)
+var whatWeek: String = ""
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,19 +38,19 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         val daySpinner = findViewById<Spinner>(R.id.spinDay)
+        val evenSpinner = findViewById<Spinner>(R.id.spinEven)
 
-
-        val url = URL("https://kemsu.ru/education/schedule//")
-        val urlConnection = url.openConnection() as HttpURLConnection
         Thread {
-            try {
-                val text = urlConnection.inputStream.bufferedReader().readText()
-                Log.d("UrlTest", text)
-            } finally {
-                urlConnection.disconnect()
-            }
+            var doc = Jsoup.connect("https://kemsu.ru/education/schedule//").get()
+            whatWeek = doc.select("body > main > div > div > div > div.calendar-week > div:nth-child(2)").toString()
+            Log.d("UrlTest", whatWeek)
         }.start()
 
+        if (whatWeek.contains("нечетная")) {
+            evenSpinner.setSelection(1)
+        } else  {
+            evenSpinner.setSelection(0)
+        }
 
         when (dayOfWeek) {
             "понедельник" -> daySpinner.setSelection(0)
