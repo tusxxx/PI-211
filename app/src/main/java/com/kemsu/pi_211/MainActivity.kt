@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
 
         button.setOnClickListener {
             setDay()
-            notiffy()
         }
     }
 
@@ -187,7 +186,7 @@ class MainActivity : AppCompatActivity() {
                 lesson3.text = "ИСиТ, 2131в ауд"
                 lesson4.text = ""
             }
-            Day("Среда", "Четная", "Вторая  ") -> {
+            Day("Среда", "Четная", "Вторая") -> {
                 lesson1.text = "История, 5104ауд"
                 lesson2.text = "ВышМат, 3205ауд"
                 lesson3.text = "ИСиТ, 2131в ауд"
@@ -223,23 +222,5 @@ class MainActivity : AppCompatActivity() {
                 lesson5.text = ".спи"
             }
         }
-    }
-
-    fun notiffy() {
-        val NOTIFY_ID: Int = 100;
-        val notificationIntent = Intent(this, MainActivity::class.java)
-        val contentIntent = PendingIntent.getActivity(
-            this,
-            0,
-            notificationIntent,
-            PendingIntent.FLAG_CANCEL_CURRENT
-        )
-        val builder = NotificationCompat.Builder(this)
-        builder.setContentIntent(contentIntent)
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentTitle("Уведомление")
-            .setContentText("Тест")
-        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.notify(NOTIFY_ID, builder.build())
     }
 }
