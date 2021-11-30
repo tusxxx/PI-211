@@ -1,8 +1,5 @@
 package com.kemsu.pi_211
 
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -10,7 +7,6 @@ import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
 import org.jsoup.Jsoup
 import java.text.SimpleDateFormat
 import java.util.*
