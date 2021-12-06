@@ -35,8 +35,14 @@ class MainActivity : AppCompatActivity() {
         val groupSpinner = findViewById<Spinner>(R.id.spinGroup)
 
         Thread {
-            var doc = Jsoup.connect("https://kemsu.ru/education/schedule//").get()
-            whatWeek = doc.select("body > main > div > div > div > div.calendar-week > div:nth-child(2)").toString()
+            try {
+                var doc = Jsoup.connect("https://kemsu.ru/education/schedule//").get()
+                whatWeek = doc.select("body > main > div > div > div > div.calendar-week > div:nth-child(2)").toString()
+            } catch (e: Exception) {
+                runOnUiThread {
+                    evenSpinner.setSelection(0)
+                }
+            }
             Log.d("UrlTest", whatWeek)
             runOnUiThread {
                 if (whatWeek.contains("нечетная")) {

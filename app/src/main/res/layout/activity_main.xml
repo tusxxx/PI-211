@@ -7,73 +7,74 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btFind"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/inThisDay"
-        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinGroup" />
 
     <Spinner
         android:id="@+id/spinEven"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/teal_200"
         android:entries="@array/even"
         android:padding="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/spinDay"
+        app:layout_constraintBottom_toTopOf="@id/spinDay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/spinDay"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/teal_200"
         android:entries="@array/days"
         android:padding="16dp"
         android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toTopOf="@+id/spinGroup"
+        app:layout_constraintBottom_toTopOf="@id/spinGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinEven" />
+        app:layout_constraintTop_toBottomOf="@id/spinEven"
+        tools:layout_editor_absoluteY="53dp" />
 
     <Spinner
         android:id="@+id/spinGroup"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
         android:background="@color/teal_200"
         android:entries="@array/group"
         android:padding="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintBottom_toTopOf="@id/btFind"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinDay" />
+        app:layout_constraintTop_toBottomOf="@id/spinDay"
+        tools:layout_editor_absoluteY="107dp" />
 
-    <TableLayout
-        android:id="@+id/tableLayout"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Button
+        android:id="@+id/btFind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/inThisDay"
+        app:layout_constraintBottom_toTopOf="@id/llTable"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinGroup" />
 
+    <LinearLayout
+        android:id="@+id/llTable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btFind">
 
-        <TableRow
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="16dp">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tvTime1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_margin="16dp"
                 android:background="@color/teal_700"
                 android:gravity="center"
                 android:text="8.00"
@@ -83,19 +84,22 @@
                 android:id="@+id/tvLesson1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:textSize="24sp" />
-        </TableRow>
 
-        <TableRow
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="16dp">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tvTime2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_margin="16dp"
                 android:background="@color/teal_700"
                 android:gravity="center"
                 android:text="9.45"
@@ -105,19 +109,22 @@
                 android:id="@+id/tvLesson2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:textSize="24sp" />
-        </TableRow>
 
-        <TableRow
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="16dp">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tvTime3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_margin="16dp"
                 android:background="@color/teal_700"
                 android:gravity="center"
                 android:text="11.45"
@@ -127,19 +134,22 @@
                 android:id="@+id/tvLesson3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:textSize="24sp" />
-        </TableRow>
 
-        <TableRow
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="16dp">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tvTime4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_margin="16dp"
                 android:background="@color/teal_700"
                 android:gravity="center"
                 android:text="13.30"
@@ -149,19 +159,21 @@
                 android:id="@+id/tvLesson4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:textSize="24sp" />
-        </TableRow>
+        </LinearLayout>
 
-        <TableRow
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="16dp">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tvTime5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_margin="16dp"
                 android:background="@color/teal_700"
                 android:gravity="center"
                 android:text="15.30"
@@ -171,10 +183,12 @@
                 android:id="@+id/tvLesson5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:textSize="24sp" />
-        </TableRow>
+        </LinearLayout>
 
-    </TableLayout>
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
