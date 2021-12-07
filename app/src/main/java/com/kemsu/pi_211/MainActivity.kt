@@ -22,10 +22,52 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val button: Button = findViewById(R.id.btFind)
+        val buttonToday: Button = findViewById(R.id.btFindToday)
 
         button.setOnClickListener {
             setDay()
         }
+        buttonToday.setOnClickListener {
+            setToday()
+        }
+    }
+
+    private fun setToday() {
+        val daySpinner = findViewById<Spinner>(R.id.spinDay)
+        val evenSpinner = findViewById<Spinner>(R.id.spinEven)
+        val groupSpinner = findViewById<Spinner>(R.id.spinGroup)
+
+        Thread {
+            try {
+                val doc = Jsoup.connect("https://kemsu.ru/education/schedule//").get()
+                whatWeek = doc.select("body > main > div > div > div > div.calendar-week > div:nth-child(2)").toString()
+            } catch (e: Exception) {
+                runOnUiThread {
+                    evenSpinner.setSelection(0)
+                }
+            }
+            Log.d("UrlTest", whatWeek)
+            runOnUiThread {
+                if (whatWeek.contains("нечетная")) {
+                    evenSpinner.setSelection(1)
+                } else  {
+                    evenSpinner.setSelection(0)
+                }
+            }
+        }.start()
+
+        when (dayOfWeek) {
+            "понедельник" -> daySpinner.setSelection(0)
+            "вторник" -> daySpinner.setSelection(1)
+            "среда" -> daySpinner.setSelection(2)
+            "четверг" -> daySpinner.setSelection(3)
+            "пятница" -> daySpinner.setSelection(4)
+        }
+
+        val groupState = getSharedPreferences("Group state", MODE_PRIVATE)
+        groupSpinner.setSelection(groupState.getInt("Group", 0))
+
+        setDay()
     }
 
     override fun onStart() {
@@ -36,7 +78,7 @@ class MainActivity : AppCompatActivity() {
 
         Thread {
             try {
-                var doc = Jsoup.connect("https://kemsu.ru/education/schedule//").get()
+                val doc = Jsoup.connect("https://kemsu.ru/education/schedule//").get()
                 whatWeek = doc.select("body > main > div > div > div > div.calendar-week > div:nth-child(2)").toString()
             } catch (e: Exception) {
                 runOnUiThread {
