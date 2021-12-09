@@ -2,7 +2,6 @@ package com.kemsu.pi_211
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
@@ -11,8 +10,7 @@ import org.jsoup.Jsoup
 import java.text.SimpleDateFormat
 import java.util.*
 
-val calendar = Calendar.getInstance()
-val date = calendar.time
+val date = Calendar.getInstance().time
 val dayOfWeek = SimpleDateFormat("EEEE").format(date.time)
 var whatWeek: String = ""
 
@@ -32,30 +30,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        setToday()
+    }
+
     private fun setToday() {
         val daySpinner = findViewById<Spinner>(R.id.spinDay)
         val evenSpinner = findViewById<Spinner>(R.id.spinEven)
         val groupSpinner = findViewById<Spinner>(R.id.spinGroup)
 
-        Thread {
-            try {
-                val doc = Jsoup.connect("https://kemsu.ru/education/schedule//").get()
-                whatWeek = doc.select("body > main > div > div > div > div.calendar-week > div:nth-child(2)").toString()
-            } catch (e: Exception) {
-                runOnUiThread {
-                    evenSpinner.setSelection(0)
-                }
-            }
-            Log.d("UrlTest", whatWeek)
-            runOnUiThread {
-                if (whatWeek.contains("нечетная")) {
-                    evenSpinner.setSelection(1)
-                } else  {
-                    evenSpinner.setSelection(0)
-                }
-            }
-        }.start()
-
         when (dayOfWeek) {
             "понедельник" -> daySpinner.setSelection(0)
             "вторник" -> daySpinner.setSelection(1)
@@ -64,58 +48,42 @@ class MainActivity : AppCompatActivity() {
             "пятница" -> daySpinner.setSelection(4)
         }
 
-        val groupState = getSharedPreferences("Group state", MODE_PRIVATE)
-        groupSpinner.setSelection(groupState.getInt("Group", 0))
-
-        setDay()
-    }
-
-    override fun onStart() {
-        super.onStart()
-        val daySpinner = findViewById<Spinner>(R.id.spinDay)
-        val evenSpinner = findViewById<Spinner>(R.id.spinEven)
-        val groupSpinner = findViewById<Spinner>(R.id.spinGroup)
-
         Thread {
             try {
                 val doc = Jsoup.connect("https://kemsu.ru/education/schedule//").get()
-                whatWeek = doc.select("body > main > div > div > div > div.calendar-week > div:nth-child(2)").toString()
+                whatWeek =
+                    doc.select("body > main > div > div > div > div.calendar-week > div:nth-child(2)")
+                        .text()
             } catch (e: Exception) {
                 runOnUiThread {
                     evenSpinner.setSelection(0)
                 }
             }
-            Log.d("UrlTest", whatWeek)
             runOnUiThread {
                 if (whatWeek.contains("нечетная")) {
                     evenSpinner.setSelection(1)
-                } else  {
+                } else {
                     evenSpinner.setSelection(0)
                 }
             }
+            Thread.sleep(1000)
+            setDay()
         }.start()
-
-        when (dayOfWeek) {
-            "понедельник" -> daySpinner.setSelection(0)
-            "вторник" -> daySpinner.setSelection(1)
-            "среда" -> daySpinner.setSelection(2)
-            "четверг" -> daySpinner.setSelection(3)
-            "пятница" -> daySpinner.setSelection(4)
-        }
 
         val groupState = getSharedPreferences("Group state", MODE_PRIVATE)
         groupSpinner.setSelection(groupState.getInt("Group", 0))
-
     }
 
-    fun setDay() {
+
+    private fun setDay() {
         val day = findViewById<Spinner>(R.id.spinDay).selectedItem
         val even = findViewById<Spinner>(R.id.spinEven).selectedItem
         val group = findViewById<Spinner>(R.id.spinGroup).selectedItem
         val groupSpinner = findViewById<Spinner>(R.id.spinGroup)
         val thisDay = Day(day.toString(), even.toString(), group.toString())
 
-        val groupState: SharedPreferences.Editor = getSharedPreferences("Group state", MODE_PRIVATE).edit()
+        val groupState: SharedPreferences.Editor =
+            getSharedPreferences("Group state", MODE_PRIVATE).edit()
         groupState.putInt("Group", groupSpinner.selectedItemPosition)
         groupState.apply()
 

@@ -5,8 +5,8 @@
     android:id="@+id/Constrait"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/mainBackground">
+    android:background="@color/mainBackground"
+    android:orientation="vertical">
 
 
     <Spinner
@@ -109,10 +109,10 @@
                 android:id="@+id/tvLesson1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20sp"
-                android:textColor="@color/forText"
                 android:layout_gravity="center"
+                android:layout_marginEnd="20sp"
                 android:gravity="center"
+                android:textColor="@color/forText"
                 android:textSize="24sp" />
 
         </LinearLayout>
@@ -128,8 +128,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16sp"
                 android:background="@drawable/rounded_time"
-                android:backgroundTintMode="multiply"
                 android:backgroundTint="@color/spinnerColorTint"
+                android:backgroundTintMode="multiply"
                 android:gravity="center"
                 android:text="9:45"
                 android:textColor="@color/forText"
@@ -139,10 +139,10 @@
                 android:id="@+id/tvLesson2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20sp"
-                android:textColor="@color/forText"
                 android:layout_gravity="center"
+                android:layout_marginEnd="20sp"
                 android:gravity="center"
+                android:textColor="@color/forText"
                 android:textSize="24sp" />
 
         </LinearLayout>
@@ -169,10 +169,10 @@
                 android:id="@+id/tvLesson3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20sp"
-                android:textColor="@color/forText"
                 android:layout_gravity="center"
+                android:layout_marginEnd="20sp"
                 android:gravity="center"
+                android:textColor="@color/forText"
                 android:textSize="24sp" />
 
         </LinearLayout>
@@ -188,8 +188,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16sp"
                 android:background="@drawable/rounded_time"
-                android:backgroundTintMode="multiply"
                 android:backgroundTint="@color/spinnerColorTint"
+                android:backgroundTintMode="multiply"
                 android:gravity="center"
                 android:text="13:30"
                 android:textColor="@color/forText"
@@ -199,10 +199,10 @@
                 android:id="@+id/tvLesson4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20sp"
-                android:textColor="@color/forText"
                 android:layout_gravity="center"
+                android:layout_marginEnd="20sp"
                 android:gravity="center"
+                android:textColor="@color/forText"
                 android:textSize="24sp" />
         </LinearLayout>
 
@@ -217,8 +217,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16sp"
                 android:background="@drawable/rounded_time"
-                android:backgroundTintMode="multiply"
                 android:backgroundTint="@color/spinnerColorTint"
+                android:backgroundTintMode="multiply"
                 android:gravity="center"
                 android:text="15:30"
                 android:textColor="@color/forText"
@@ -228,10 +228,10 @@
                 android:id="@+id/tvLesson5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20sp"
-                android:textColor="@color/forText"
                 android:layout_gravity="center"
+                android:layout_marginEnd="20sp"
                 android:gravity="center"
+                android:textColor="@color/forText"
                 android:textSize="24sp" />
         </LinearLayout>
 

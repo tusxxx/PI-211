@@ -4,7 +4,8 @@
     <string name="tab_text_2">Tab 2</string>
     <string name="even_week">Четная неделя</string>
     <string name="inThisDay">В этот день</string>
-    <string name="today">Эта неделя</string>
+    <string name="today">Сегодня</string>
+
     <string-array name="days">
         <item>Понедельник</item>
         <item>Вторник</item>
@@ -12,12 +13,15 @@
         <item>Четверг</item>
         <item>Пятница</item>
     </string-array>
+
     <string-array name="group">
         <item>Первая</item>
         <item>Вторая</item>
     </string-array>
+
     <string-array name="even">
         <item>Четная</item>
         <item>Нечетная</item>
     </string-array>
+
 </resources>
