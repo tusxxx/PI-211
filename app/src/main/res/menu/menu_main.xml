@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/frFirstGroup"
+        android:icon="@drawable/ic_baseline_exposure_plus_1_24"
+        android:title="@string/firstGroup" />
+    <item
+        android:id="@+id/frNews"
+        android:icon="@drawable/ic_baseline_calendar_today_24"
+        android:title="@string/news" />
+    <item
+        android:id="@+id/frSecondGroup"
+        android:icon="@drawable/ic_baseline_exposure_plus_2_24"
+        android:title="@string/secondGroup" />
+</menu>

@@ -1,241 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/Constrait"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/mainBackground"
     android:orientation="vertical">
 
+    <fragment
+        android:id="@+id/frMain"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_main" />
 
-    <Spinner
-        android:id="@+id/spinEven"
-        android:layout_width="200sp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/spinnerColorTint"
-        android:entries="@array/even"
-        android:padding="16sp"
-        android:popupBackground="@color/forText"
-        android:spinnerMode="dropdown"
-        app:circularflow_angles=""
-        app:layout_constraintBottom_toTopOf="@id/spinDay"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Spinner
-        android:id="@+id/spinDay"
-        android:layout_width="200sp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/spinnerColorTint"
-        android:entries="@array/days"
-        android:padding="16sp"
-        android:popupBackground="@color/forText"
-        android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toTopOf="@id/spinGroup"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinEven" />
-
-    <Spinner
-        android:id="@+id/spinGroup"
-        android:layout_width="200sp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/spinnerColorTint"
-        android:entries="@array/group"
-        android:padding="16sp"
-        android:popupBackground="@color/forText"
-        app:layout_constraintBottom_toTopOf="@id/btFind"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinDay" />
-
-    <Button
-        android:id="@+id/btFind"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:background="@drawable/rounded_button"
-
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/inThisDay"
-        android:textColor="@color/forText"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@id/llTable"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinGroup" />
-
-    <Button
-        android:id="@+id/btFindToday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="35dp"
-        android:background="@drawable/rounded_button"
-        android:text="@string/today"
-        android:textColor="@color/forText"
-        app:layout_constraintBottom_toBottomOf="@id/spinGroup"
-        app:layout_constraintBottom_toTopOf="@id/llTable"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinGroup" />
-
-    <LinearLayout
-        android:id="@+id/llTable"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btFind">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvTime1"
-                android:layout_width="90sp"
-                android:layout_height="wrap_content"
-                android:layout_margin="16sp"
-                android:background="@drawable/rounded_time"
-                android:backgroundTint="@color/spinnerColorTint"
-                android:backgroundTintMode="multiply"
-                android:gravity="center"
-                android:text="8:00"
-                android:textColor="@color/forText"
-                android:textSize="28sp" />
-
-            <TextView
-                android:id="@+id/tvLesson1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginEnd="20sp"
-                android:gravity="center"
-                android:textColor="@color/forText"
-                android:textSize="24sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvTime2"
-                android:layout_width="90sp"
-                android:layout_height="wrap_content"
-                android:layout_margin="16sp"
-                android:background="@drawable/rounded_time"
-                android:backgroundTint="@color/spinnerColorTint"
-                android:backgroundTintMode="multiply"
-                android:gravity="center"
-                android:text="9:45"
-                android:textColor="@color/forText"
-                android:textSize="28sp" />
-
-            <TextView
-                android:id="@+id/tvLesson2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginEnd="20sp"
-                android:gravity="center"
-                android:textColor="@color/forText"
-                android:textSize="24sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvTime3"
-                android:layout_width="90sp"
-                android:layout_height="wrap_content"
-                android:layout_margin="16sp"
-                android:background="@drawable/rounded_time"
-                android:backgroundTint="@color/spinnerColorTint"
-                android:backgroundTintMode="multiply"
-                android:gravity="center"
-                android:text="11:45"
-                android:textColor="@color/forText"
-                android:textSize="28sp" />
-
-            <TextView
-                android:id="@+id/tvLesson3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginEnd="20sp"
-                android:gravity="center"
-                android:textColor="@color/forText"
-                android:textSize="24sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvTime4"
-                android:layout_width="90sp"
-                android:layout_height="wrap_content"
-                android:layout_margin="16sp"
-                android:background="@drawable/rounded_time"
-                android:backgroundTint="@color/spinnerColorTint"
-                android:backgroundTintMode="multiply"
-                android:gravity="center"
-                android:text="13:30"
-                android:textColor="@color/forText"
-                android:textSize="28sp" />
-
-            <TextView
-                android:id="@+id/tvLesson4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginEnd="20sp"
-                android:gravity="center"
-                android:textColor="@color/forText"
-                android:textSize="24sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvTime5"
-                android:layout_width="90sp"
-                android:layout_height="wrap_content"
-                android:layout_margin="16sp"
-                android:background="@drawable/rounded_time"
-                android:backgroundTint="@color/spinnerColorTint"
-                android:backgroundTintMode="multiply"
-                android:gravity="center"
-                android:text="15:30"
-                android:textColor="@color/forText"
-                android:textSize="28sp" />
-
-            <TextView
-                android:id="@+id/tvLesson5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginEnd="20sp"
-                android:gravity="center"
-                android:textColor="@color/forText"
-                android:textSize="24sp" />
-        </LinearLayout>
-
-    </LinearLayout>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_main" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
