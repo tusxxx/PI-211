@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/frFirstGroup">
+
+    <fragment
+        android:id="@+id/frFirstGroup"
+        android:name="com.kemsu.pi_211.ui.first_group.FirstGroupFragment"
+        android:label="first_group_fragment"
+        tools:layout="@layout/first_group_fragment" />
+    <fragment
+        android:id="@+id/frNews"
+        android:name="com.kemsu.pi_211.ui.news.NewsFragment"
+        android:label="news_fragment"
+        tools:layout="@layout/news_fragment" />
+    <fragment
+        android:id="@+id/frSecondGroup"
+        android:name="com.kemsu.pi_211.ui.second_group.SecondGroupFragment"
+        android:label="second_group_fragment"
+        tools:layout="@layout/second_group_fragment" />
+</navigation>
