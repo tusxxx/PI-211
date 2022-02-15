@@ -5,6 +5,9 @@
     <string name="even_week">Четная неделя</string>
     <string name="inThisDay">В этот день</string>
     <string name="today">Сегодня</string>
+    <string name="firstGroup">Первая группа</string>
+    <string name="news">Новости</string>
+    <string name="secondGroup">Вторая группа</string>
 
     <string-array name="days">
         <item>Понедельник</item>
